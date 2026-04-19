@@ -76,6 +76,7 @@ body {
   text-align: center;
   box-shadow: 0 0 20px rgba(0,191,255,0.4);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -96,6 +97,41 @@ body {
   margin: 10px 0;
 }
 
+/* 🔥 מודאל */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #111;
+  padding: 25px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,191,255,0.8);
+}
+
+.modal img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  color: red;
+  font-size: 20px;
+}
+
 .btn {
   background: #00bfff;
   border: none;
@@ -103,10 +139,7 @@ body {
   border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
-}
-
-.btn:hover {
-  background: #009acd;
+  margin-top: 10px;
 }
 
 /* בקרוב */
@@ -137,8 +170,6 @@ body {
 <!-- בית -->
 <div id="home" class="section active">
   <div class="title">SkyIL RolePlay 🔥</div>
-  <p>ברוכים הבאים לחנות הרשמית של השרת  
-  כאן תוכלו לרכוש רכבים, כסף ואנבאן</p>
 </div>
 
 <!-- רכבים -->
@@ -146,13 +177,10 @@ body {
   <div class="title">🚗 רכבים</div>
 
   <div class="container">
-    <div class="card">
-     <img src="car.png">
+    <div class="card" onclick="openProduct('רכב קאסטום',30,'car.png')">
+      <img src="car.png">
       <h3>רכב קאסטום</h3>
       <div class="price">₪30</div>
-      <a href="https://paypal.me/saharshevach/30" target="_blank">
-        <button class="btn">קנה עכשיו</button>
-      </a>
     </div>
   </div>
 </div>
@@ -163,25 +191,22 @@ body {
 
   <div class="container">
 
-    <div class="card">
+    <div class="card" onclick="openProduct('10K כסף',10,'money.png')">
       <img src="money.png">
       <h3>10K</h3>
       <div class="price">₪10</div>
-      <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="openProduct('500K כסף',25,'cash.png')">
       <img src="cash.png">
       <h3>500K</h3>
       <div class="price">₪25</div>
-      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="openProduct('1M כסף',50,'https://cdn-icons-png.flaticon.com/512/2331/2331947.png')">
       <img src="https://cdn-icons-png.flaticon.com/512/2331/2331947.png">
       <h3>1M</h3>
       <div class="price">₪50</div>
-      <a href="https://paypal.me/saharshevach/50"><button class="btn">קנה</button></a>
     </div>
 
   </div>
@@ -193,39 +218,16 @@ body {
 
   <div class="container">
 
-    <div class="card">
+    <div class="card" onclick="openProduct('1-4 ימים',10,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png')">
       <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>1-4 ימים</h3>
       <div class="price">₪10</div>
-      <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
 
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>שבוע - חודש</h3>
-      <div class="price">₪25</div>
-      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>חודש - חצי שנה</h3>
-      <div class="price">₪50</div>
-      <a href="https://paypal.me/saharshevach/50"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
+    <div class="card" onclick="openProduct('פרמה',100,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png')">
       <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>פרמה</h3>
       <div class="price">₪100</div>
-      <a href="https://paypal.me/saharshevach/100"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>אנטיצ'יט</h3>
-      <div class="price">₪150</div>
-      <a href="https://paypal.me/saharshevach/150"><button class="btn">קנה</button></a>
     </div>
 
   </div>
@@ -239,10 +241,41 @@ body {
 </div>
 </div>
 
+<!-- 🔥 חלון מוצר -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProduct()">✖</span>
+
+    <img id="pimg">
+    <h2 id="pname"></h2>
+    <p id="pprice"></p>
+
+    <button class="btn" onclick="buy()">קנה עכשיו</button>
+  </div>
+</div>
+
 <script>
+let currentPrice = 0;
+
 function show(section) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(section).classList.add('active');
+}
+
+function openProduct(name, price, img) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("pname").innerText = name;
+  document.getElementById("pprice").innerText = "₪" + price;
+  document.getElementById("pimg").src = img;
+  currentPrice = price;
+}
+
+function closeProduct() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function buy() {
+  window.open("https://paypal.me/saharshevach/" + currentPrice);
 }
 </script>
 
