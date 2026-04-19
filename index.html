@@ -17,12 +17,11 @@ body {
 }
 
 .overlay {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   min-height: 100vh;
   display: flex;
 }
 
-/* תפריט צד */
 .sidebar {
   width: 230px;
   background: rgba(0,0,0,0.9);
@@ -53,35 +52,32 @@ body {
 .section { display: none; }
 .active { display: block; }
 
-.title {
-  font-size: 40px;
+/* תקנון */
+.fullscreen-rules {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* 🔥 תקנון */
-.rules-box {
-  background: rgba(0,0,0,0.7);
-  padding: 25px;
-  border-radius: 20px;
-  max-width: 600px;
-  box-shadow: 0 0 30px rgba(0,191,255,0.8);
-}
-
-.rules-box p {
-  font-weight: bold;
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-.rules-box a {
+.fullscreen-rules h1 {
+  font-size: 50px;
   color: #00bfff;
+}
+
+.fullscreen-rules p {
+  font-size: 22px;
   font-weight: bold;
+  margin: 10px 0;
 }
 
 /* כרטיסים */
 .container {
   display: flex;
   gap: 25px;
-  flex-wrap: wrap;
 }
 
 .card {
@@ -128,11 +124,6 @@ body {
   width: 100%;
 }
 
-.close {
-  color: red;
-  cursor: pointer;
-}
-
 .btn {
   background: #00bfff;
   border: none;
@@ -142,10 +133,14 @@ body {
   margin-top: 10px;
 }
 
+.close {
+  color: red;
+  cursor: pointer;
+}
+
 .coming {
   font-size: 50px;
   text-align: center;
-  margin-top: 100px;
 }
 </style>
 </head>
@@ -167,66 +162,52 @@ body {
 
 <!-- תקנון -->
 <div id="home" class="section active">
+  <div class="fullscreen-rules">
 
-  <div style="
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-  ">
+    <h1>📜 תקנון SkyIL</h1>
 
-    <h1 style="font-size: 50px; color:#00bfff;">📜 תקנון SkyIL</h1>
+    <p>ברוכים הבאים לאתר הקהילה שלנו SkyIL</p>
+    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד לאישור ורק לאחר מכן לקנות</p>
 
-    <p style="font-size:22px; font-weight:bold; margin:15px 0;">
-      ברוכים הבאים לאתר הקהילה שלנו SkyIL
-    </p>
-
-    <p style="font-size:22px; font-weight:bold; margin:15px 0;">
-      לפני כל קנייה חובה לפתוח טיקט בדיסקורד לאישור ורק לאחר מכן לקנות
-    </p>
-
-    <p style="font-size:22px; font-weight:bold; margin:15px 0;">
+    <p>
       קישור לדיסקורד:
       <a href="https://discord.gg/TXujcHys" target="_blank" style="color:#00bfff;">
         לחץ כאן
       </a>
     </p>
 
-    <p style="font-size:22px; font-weight:bold; margin:15px 0;">
-      לאחר קנייה אין אפשרות לקבל החזר גם לא דרך פייפאל (רק חריגים)
-    </p>
+    <p>לאחר קנייה אין אפשרות לקבל החזר גם לא דרך פייפאל (רק חריגים)</p>
+    <p>ריפאונד = פרמה עד להחזר הכסף</p>
 
-    <p style="font-size:22px; font-weight:bold; margin:15px 0;">
-      ריפאונד = פרמה עד להחזר הכסף
-    </p>
-
-    <p style="font-size:22px; font-weight:bold; margin-top:30px; color:#00ff88;">
-      המשך חווית קנייה מהנה מצוות הקהילה ❤️
-    </p>
+    <p style="color:#00ff88;">המשך חווית קנייה מהנה ❤️</p>
 
   </div>
+</div>
 
-</div>
 <!-- רכבים -->
-<div class="card" onclick="openProduct(
-  'רכב קאסטום',
-  50,
-  'car.png',
-  '🚀 מהירות: 350+ קמ״ש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים'
-)">
-  <img src="car.png">
-  <h3>רכב קאסטום</h3>
-  <div class="price">₪50</div>
+<div id="cars" class="section">
+  <h1>🚗 רכבים</h1>
+
+  <div class="container">
+    <div class="card" onclick="openProduct(
+      'רכב קאסטום',
+      50,
+      'car.png',
+      '🚀 מהירות: 350+ קמ״ש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים'
+    )">
+      <img src="car.png">
+      <h3>רכב קאסטום</h3>
+      <p class="price">₪50</p>
+    </div>
+  </div>
 </div>
+
 <!-- כסף -->
 <div id="money" class="section">
-  <div class="title">💰 כסף</div>
+  <h1>💰 כסף</h1>
+
   <div class="container">
-    <div class="card" onclick="openProduct('10K כסף',10,'money.png')">
+    <div class="card" onclick="openProduct('10K כסף',10,'money.png','כסף בסיסי לשרת')">
       <img src="money.png">
       <h3>10K</h3>
       <p class="price">₪10</p>
@@ -236,9 +217,10 @@ body {
 
 <!-- אנבאן -->
 <div id="unban" class="section">
-  <div class="title">🔓 אנבאן</div>
+  <h1>🔓 אנבאן</h1>
+
   <div class="container">
-    <div class="card" onclick="openProduct('פרמה',100,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png')">
+    <div class="card" onclick="openProduct('פרמה',100,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png','הסרת באן מלאה')">
       <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>פרמה</h3>
       <p class="price">₪100</p>
@@ -257,11 +239,16 @@ body {
 <!-- מודאל -->
 <div id="modal" class="modal">
   <div class="modal-content">
+
     <span class="close" onclick="closeProduct()">✖</span>
+
     <img id="pimg">
     <h2 id="pname"></h2>
     <p id="pprice"></p>
+    <p id="pdesc"></p>
+
     <button class="btn" onclick="buy()">קנה עכשיו</button>
+
   </div>
 </div>
 
@@ -273,11 +260,12 @@ function show(section) {
   document.getElementById(section).classList.add('active');
 }
 
-function openProduct(name, price, img) {
+function openProduct(name, price, img, desc) {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("pname").innerText = name;
   document.getElementById("pprice").innerText = "₪" + price;
   document.getElementById("pimg").src = img;
+  document.getElementById("pdesc").innerText = desc;
   currentPrice = price;
 }
 
