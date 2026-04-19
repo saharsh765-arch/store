@@ -9,110 +9,244 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  background: #0f2027;
   color: white;
+}
+
+/* צד שמאל */
+.sidebar {
+  width: 220px;
+  background: #111;
+  height: 100vh;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
   text-align: center;
+  color: #00bfff;
 }
 
-.header {
-  padding: 40px;
-  font-size: 45px;
-  font-weight: bold;
+.sidebar a {
+  display: block;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.sub {
-  margin-bottom: 30px;
-  color: #ccc;
+.sidebar a:hover {
+  background: #00bfff;
+  color: black;
 }
 
+/* תוכן */
+.content {
+  margin-right: 220px;
+  padding: 20px;
+  width: 100%;
+}
+
+.section {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.title {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+/* כרטיסים */
 .container {
   display: flex;
-  justify-content: center;
-  gap: 25px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding: 20px;
 }
 
 .card {
   background: #111;
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
-  width: 260px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.6);
-  transition: 0.3s;
+  width: 250px;
+  text-align: center;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card h2 {
-  color: #00bfff;
+.card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .price {
-  font-size: 22px;
   margin: 10px 0;
+  font-size: 20px;
 }
 
 .btn {
   background: #00bfff;
-  padding: 12px 20px;
   border: none;
+  padding: 10px;
   border-radius: 10px;
   cursor: pointer;
-  color: black;
-  font-weight: bold;
-  transition: 0.3s;
 }
 
-.btn:hover {
-  background: #009acd;
-}
-
-.footer {
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 14px;
-  color: #aaa;
+/* בקרוב */
+.coming {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 100px;
+  color: #00bfff;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">SkyIL RolePlay Store</div>
-<div class="sub">ברוכים הבאים לחנות הרשמית של השרת 🔥</div>
+<div class="sidebar">
+  <h2>SkyIL</h2>
+  <a onclick="show('home')">🏠 בית</a>
+  <a onclick="show('cars')">🚗 רכבים</a>
+  <a onclick="show('money')">💰 חבילות כסף</a>
+  <a onclick="show('unban')">🔓 אנבאן</a>
+  <a onclick="show('pads')">📦 פדים</a>
+</div>
 
-<div class="container">
+<div class="content">
 
-  <!-- VIP -->
-  <div class="card">
-    <h2>VIP GOLD</h2>
-    <p>VIP + הטבות מיוחדות</p>
-    <div class="price">₪25</div>
-    
-    <a href="https://paypal.me/saharshevach/25" target="_blank">
-      <button class="btn">קנה עכשיו</button>
-    </a>
+<!-- בית -->
+<div id="home" class="section active">
+  <div class="title">ברוכים הבאים 🔥</div>
+  <p>
+  זהו האתר הרשמי של SkyIL RolePlay  
+  כאן תוכלו לרכוש VIP, כסף, רכבים ועוד  
+  כל הקניות תומכות בפיתוח השרת ❤️
+  </p>
+</div>
+
+<!-- רכבים -->
+<div id="cars" class="section">
+  <div class="title">🚗 רכבים</div>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://i.imgur.com/8QfQ5bP.png">
+      <h3>רכב קאסטום</h3>
+      <div class="price">₪30</div>
+
+      <a href="https://paypal.me/saharshevach/30" target="_blank">
+        <button class="btn">קנה עכשיו</button>
+      </a>
+    </div>
   </div>
+</div>
 
-  <!-- כסף -->
-  <div class="card">
-    <h2>100K כסף</h2>
-    <p>כסף לשרת</p>
-    <div class="price">₪10</div>
-    
-    <a href="https://paypal.me/saharshevach/10" target="_blank">
-      <button class="btn">קנה עכשיו</button>
-    </a>
+<!-- כסף -->
+<div id="money" class="section">
+  <div class="title">💰 חבילות כסף</div>
+
+  <div class="container">
+
+    <div class="card">
+      <img src="https://i.imgur.com/Z6XQ7QO.png">
+      <h3>100K כסף</h3>
+      <div class="price">₪10</div>
+      <a href="https://paypal.me/saharshevach/10" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/Z6XQ7QO.png">
+      <h3>300K כסף</h3>
+      <div class="price">₪20</div>
+      <a href="https://paypal.me/saharshevach/20" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/Z6XQ7QO.png">
+      <h3>1M כסף</h3>
+      <div class="price">₪40</div>
+      <a href="https://paypal.me/saharshevach/40" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
   </div>
+</div>
+
+<!-- אנבאן -->
+<div id="unban" class="section">
+  <div class="title">🔓 אנבאן</div>
+
+  <div class="container">
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>1-4 ימים</h3>
+      <div class="price">₪10</div>
+      <a href="https://paypal.me/saharshevach/10" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>שבוע - חודש</h3>
+      <div class="price">₪25</div>
+      <a href="https://paypal.me/saharshevach/25" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>חודש - חצי שנה</h3>
+      <div class="price">₪50</div>
+      <a href="https://paypal.me/saharshevach/50" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>פרמה</h3>
+      <div class="price">₪100</div>
+      <a href="https://paypal.me/saharshevach/100" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>אנטי צ'יט</h3>
+      <div class="price">₪150</div>
+      <a href="https://paypal.me/saharshevach/150" target="_blank">
+        <button class="btn">קנה</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- פדים -->
+<div id="pads" class="section">
+  <div class="coming">בקרוב...</div>
+</div>
 
 </div>
 
-<div class="footer">
-© SkyIL RolePlay - כל הזכויות שמורות
-</div>
+<script>
+function show(section) {
+  document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+  document.getElementById(section).classList.add('active');
+}
+</script>
 
 </body>
 </html>
