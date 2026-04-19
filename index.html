@@ -26,7 +26,6 @@ body {
 .sidebar {
   width: 230px;
   background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(10px);
 }
 
 .sidebar h2 {
@@ -39,7 +38,6 @@ body {
   display: block;
   padding: 15px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .sidebar a:hover {
@@ -47,7 +45,6 @@ body {
   color: black;
 }
 
-/* תוכן */
 .content {
   flex: 1;
   padding: 30px;
@@ -58,7 +55,26 @@ body {
 
 .title {
   font-size: 40px;
-  margin-bottom: 20px;
+}
+
+/* 🔥 תקנון */
+.rules-box {
+  background: rgba(0,0,0,0.7);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 600px;
+  box-shadow: 0 0 30px rgba(0,191,255,0.8);
+}
+
+.rules-box p {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.rules-box a {
+  color: #00bfff;
+  font-weight: bold;
 }
 
 /* כרטיסים */
@@ -74,30 +90,20 @@ body {
   padding: 20px;
   width: 260px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,191,255,0.4);
-  transition: 0.3s;
   cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px rgba(0,191,255,0.8);
 }
 
 .card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 12px;
 }
 
 .price {
   color: #00bfff;
-  font-size: 22px;
-  margin: 10px 0;
 }
 
-/* 🔥 מודאל */
+/* מודאל */
 .modal {
   position: fixed;
   top: 0;
@@ -116,38 +122,30 @@ body {
   border-radius: 20px;
   width: 350px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,191,255,0.8);
 }
 
 .modal img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 10px;
 }
 
 .close {
-  float: right;
-  cursor: pointer;
   color: red;
-  font-size: 20px;
+  cursor: pointer;
 }
 
 .btn {
   background: #00bfff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
   margin-top: 10px;
 }
 
-/* בקרוב */
 .coming {
   font-size: 50px;
   text-align: center;
   margin-top: 100px;
-  color: #00bfff;
 }
 </style>
 </head>
@@ -158,7 +156,7 @@ body {
 
 <div class="sidebar">
   <h2>SkyIL</h2>
-  <a onclick="show('home')">🏠 תקנון</a>
+  <a onclick="show('home')">📜 תקנון</a>
   <a onclick="show('cars')">🚗 רכבים</a>
   <a onclick="show('money')">💰 כסף</a>
   <a onclick="show('unban')">🔓 אנבאן</a>
@@ -167,69 +165,63 @@ body {
 
 <div class="content">
 
-<!-- בית -->
+<!-- תקנון -->
 <div id="home" class="section active">
-  <div class="title">SkyIL RolePlay 🔥</div>
+  <div class="title">📜 תקנון</div>
+
+  <div class="rules-box">
+    <p>ברוכים הבאים לאתר הקהילה שלנו SkyIL</p>
+
+    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד לאישור ורק לאחר מכן לקנות</p>
+
+    <p>
+      קישור לדיסקורד:  
+      <a href="https://discord.gg/TXujcHys" target="_blank">
+        לחץ כאן
+      </a>
+    </p>
+
+    <p>בנוסף לאחר קנייה אין אפשרות לקבל החזר גם לא דרך הפייפאל רק חריגים!</p>
+
+    <p>ריפאונד = פרמה עד להחזר הכסף</p>
+
+    <p>המשך חווית קנייה מהנה מצוות הקהילה ❤️</p>
+  </div>
 </div>
 
 <!-- רכבים -->
 <div id="cars" class="section">
   <div class="title">🚗 רכבים</div>
-
   <div class="container">
     <div class="card" onclick="openProduct('רכב קאסטום',30,'car.png')">
       <img src="car.png">
       <h3>רכב קאסטום</h3>
-      <div class="price">₪30</div>
+      <p class="price">₪30</p>
     </div>
   </div>
 </div>
 
 <!-- כסף -->
 <div id="money" class="section">
-  <div class="title">💰 חבילות כסף</div>
-
+  <div class="title">💰 כסף</div>
   <div class="container">
-
     <div class="card" onclick="openProduct('10K כסף',10,'money.png')">
       <img src="money.png">
       <h3>10K</h3>
-      <div class="price">₪10</div>
+      <p class="price">₪10</p>
     </div>
-
-    <div class="card" onclick="openProduct('500K כסף',25,'cash.png')">
-      <img src="cash.png">
-      <h3>500K</h3>
-      <div class="price">₪25</div>
-    </div>
-
-    <div class="card" onclick="openProduct('1M כסף',50,'https://cdn-icons-png.flaticon.com/512/2331/2331947.png')">
-      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331947.png">
-      <h3>1M</h3>
-      <div class="price">₪50</div>
-    </div>
-
   </div>
 </div>
 
 <!-- אנבאן -->
 <div id="unban" class="section">
   <div class="title">🔓 אנבאן</div>
-
   <div class="container">
-
-    <div class="card" onclick="openProduct('1-4 ימים',10,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png')">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>1-4 ימים</h3>
-      <div class="price">₪10</div>
-    </div>
-
     <div class="card" onclick="openProduct('פרמה',100,'https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png')">
       <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>פרמה</h3>
-      <div class="price">₪100</div>
+      <p class="price">₪100</p>
     </div>
-
   </div>
 </div>
 
@@ -241,15 +233,13 @@ body {
 </div>
 </div>
 
-<!-- 🔥 חלון מוצר -->
+<!-- מודאל -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProduct()">✖</span>
-
     <img id="pimg">
     <h2 id="pname"></h2>
     <p id="pprice"></p>
-
     <button class="btn" onclick="buy()">קנה עכשיו</button>
   </div>
 </div>
