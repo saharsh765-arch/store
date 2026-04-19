@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<title>SkyIL Store</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+}
+
+.header {
+  padding: 40px;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #111;
+  padding: 25px;
+  border-radius: 15px;
+  width: 260px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h2 {
+  color: #00bfff;
+}
+
+.price {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.btn {
+  background: #00bfff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">SkyIL RolePlay Store</div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>VIP GOLD</h2>
+    <p>VIP + הטבות מיוחדות</p>
+    <div class="price">₪25</div>
+    <button class="btn" onclick="buy('vip')">קנה עכשיו</button>
+  </div>
+
+  <div class="card">
+    <h2>100K כסף</h2>
+    <p>כסף לשרת</p>
+    <div class="price">₪10</div>
+    <button class="btn" onclick="buy('money')">קנה עכשיו</button>
+  </div>
+
+</div>
+
+<script>
+function buy(product) {
+  if(product === 'vip'){
+    window.open("https://paypal.me/YOURNAME/25");
+  }
+  if(product === 'money'){
+    window.open("https://paypal.me/YOURNAME/10");
+  }
+}
+</script>
+
+</body>
+</html>
