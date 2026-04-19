@@ -22,21 +22,24 @@ body {
   display: flex;
 }
 
+/* תפריט צד */
 .sidebar {
-  width: 220px;
+  width: 230px;
   background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(10px);
 }
 
 .sidebar h2 {
   text-align: center;
   color: #00bfff;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .sidebar a {
   display: block;
   padding: 15px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .sidebar a:hover {
@@ -44,6 +47,7 @@ body {
   color: black;
 }
 
+/* תוכן */
 .content {
   flex: 1;
   padding: 30px;
@@ -53,47 +57,64 @@ body {
 .active { display: block; }
 
 .title {
-  font-size: 35px;
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
+/* כרטיסים */
 .container {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .card {
   background: rgba(0,0,0,0.7);
-  border-radius: 15px;
-  padding: 15px;
-  width: 250px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 260px;
   text-align: center;
+  box-shadow: 0 0 20px rgba(0,191,255,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px rgba(0,191,255,0.8);
 }
 
 .card img {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .price {
   color: #00bfff;
-  font-size: 20px;
+  font-size: 22px;
+  margin: 10px 0;
 }
 
 .btn {
   background: #00bfff;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: bold;
 }
 
+.btn:hover {
+  background: #009acd;
+}
+
+/* בקרוב */
 .coming {
   font-size: 50px;
   text-align: center;
   margin-top: 100px;
+  color: #00bfff;
 }
 </style>
 </head>
@@ -113,56 +134,104 @@ body {
 
 <div class="content">
 
+<!-- בית -->
 <div id="home" class="section active">
   <div class="title">SkyIL RolePlay 🔥</div>
-  <p>ברוכים הבאים לחנות הרשמית של השרת</p>
+  <p>ברוכים הבאים לחנות הרשמית של השרת  
+  כאן תוכלו לרכוש רכבים, כסף ואנבאן</p>
 </div>
 
+<!-- רכבים -->
 <div id="cars" class="section">
   <div class="title">🚗 רכבים</div>
+
   <div class="container">
     <div class="card">
-      <img src="https://picsum.photos/400/200?car">
+      <img src="https://i.imgur.com/8XyKX7g.png">
       <h3>רכב קאסטום</h3>
       <div class="price">₪30</div>
-      <a href="https://paypal.me/saharshevach/30"><button class="btn">קנה</button></a>
+      <a href="https://paypal.me/saharshevach/30" target="_blank">
+        <button class="btn">קנה עכשיו</button>
+      </a>
     </div>
   </div>
 </div>
 
+<!-- כסף -->
 <div id="money" class="section">
-  <div class="title">💰 כסף</div>
+  <div class="title">💰 חבילות כסף</div>
+
   <div class="container">
+
     <div class="card">
-      <img src="https://picsum.photos/400/200?money">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331947.png">
       <h3>100K</h3>
       <div class="price">₪10</div>
       <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331947.png">
+      <h3>500K</h3>
+      <div class="price">₪25</div>
+      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331947.png">
+      <h3>1M</h3>
+      <div class="price">₪50</div>
+      <a href="https://paypal.me/saharshevach/50"><button class="btn">קנה</button></a>
+    </div>
+
   </div>
 </div>
 
+<!-- אנבאן -->
 <div id="unban" class="section">
   <div class="title">🔓 אנבאן</div>
+
   <div class="container">
 
     <div class="card">
-      <img src="https://picsum.photos/400/200?ban">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>1-4 ימים</h3>
       <div class="price">₪10</div>
       <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
 
     <div class="card">
-      <img src="https://picsum.photos/400/200?security">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>שבוע - חודש</h3>
+      <div class="price">₪25</div>
+      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>חודש - חצי שנה</h3>
+      <div class="price">₪50</div>
+      <a href="https://paypal.me/saharshevach/50"><button class="btn">קנה</button></a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>פרמה</h3>
       <div class="price">₪100</div>
       <a href="https://paypal.me/saharshevach/100"><button class="btn">קנה</button></a>
     </div>
 
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
+      <h3>אנטיצ'יט</h3>
+      <div class="price">₪150</div>
+      <a href="https://paypal.me/saharshevach/150"><button class="btn">קנה</button></a>
+    </div>
+
   </div>
 </div>
 
+<!-- פדים -->
 <div id="pads" class="section">
   <div class="coming">בקרוב...</div>
 </div>
