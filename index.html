@@ -11,23 +11,20 @@
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
-  background: url('https://cdn.discordapp.com/attachments/1489011812862001192/1494057297289281606/ChatGPT_Image_Apr_15_2026_09_36_19_PM.png') no-repeat center center fixed;
+  background: url('https://cdn.discordapp.com/attachments/1489011812862001192/1494057297289281606/ChatGPT_Image_Apr_15_2026_09_36_19_PM.png') no-repeat center;
   background-size: cover;
   color: white;
 }
 
-/* שכבת כהות */
 .overlay {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   min-height: 100vh;
   display: flex;
 }
 
-/* תפריט */
 .sidebar {
   width: 220px;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.9);
   padding-top: 20px;
 }
 
@@ -39,9 +36,7 @@ body {
 .sidebar a {
   display: block;
   padding: 15px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
+  cursor: pointer;
 }
 
 .sidebar a:hover {
@@ -49,7 +44,6 @@ body {
   color: black;
 }
 
-/* תוכן */
 .content {
   flex: 1;
   padding: 30px;
@@ -59,65 +53,47 @@ body {
 .active { display: block; }
 
 .title {
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 35px;
 }
 
-/* כרטיסים */
 .container {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .card {
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 20px;
-  width: 260px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 15px;
+  padding: 15px;
+  width: 250px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,191,255,0.3);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 40px rgba(0,191,255,0.8);
 }
 
 .card img {
   width: 100%;
-  border-radius: 12px;
   height: 150px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .price {
-  font-size: 22px;
-  margin: 10px 0;
   color: #00bfff;
+  font-size: 20px;
 }
 
 .btn {
   background: #00bfff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
 }
 
-.btn:hover {
-  background: #009acd;
-}
-
-/* בקרוב */
 .coming {
   font-size: 50px;
   text-align: center;
   margin-top: 100px;
-  color: #00bfff;
 }
 </style>
 </head>
@@ -137,54 +113,35 @@ body {
 
 <div class="content">
 
-<!-- בית -->
 <div id="home" class="section active">
   <div class="title">SkyIL RolePlay 🔥</div>
-  <p>ברוכים הבאים לחנות הרשמית של השרת  
-  כאן תוכלו לרכוש רכבים, כסף ואנבאן  
-  ולהתקדם בשרת 🔥</p>
+  <p>ברוכים הבאים לחנות הרשמית</p>
 </div>
 
-<!-- רכבים -->
 <div id="cars" class="section">
   <div class="title">🚗 רכבים</div>
   <div class="container">
-
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Lamborghini_Aventador.jpg">
       <h3>רכב קאסטום</h3>
       <div class="price">₪30</div>
-      <a href="https://paypal.me/saharshevach/30" target="_blank">
-        <button class="btn">קנה</button>
-      </a>
+      <a href="https://paypal.me/saharshevach/30"><button class="btn">קנה</button></a>
     </div>
-
   </div>
 </div>
 
-<!-- כסף -->
 <div id="money" class="section">
   <div class="title">💰 כסף</div>
   <div class="container">
-
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/US_100_dollar_bill.jpg">
       <h3>100K</h3>
       <div class="price">₪10</div>
       <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1">
-      <h3>500K</h3>
-      <div class="price">₪25</div>
-      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
-    </div>
-
   </div>
 </div>
 
-<!-- אנבאן -->
 <div id="unban" class="section">
   <div class="title">🔓 אנבאן</div>
   <div class="container">
@@ -206,7 +163,6 @@ body {
   </div>
 </div>
 
-<!-- פדים -->
 <div id="pads" class="section">
   <div class="coming">בקרוב...</div>
 </div>
