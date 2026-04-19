@@ -2,6 +2,7 @@
 <html lang="he">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkyIL Store</title>
 
 <style>
@@ -19,11 +20,17 @@ body {
   font-weight: bold;
 }
 
+.sub {
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
 .container {
   display: flex;
   justify-content: center;
   gap: 25px;
   flex-wrap: wrap;
+  padding: 20px;
 }
 
 .card {
@@ -56,6 +63,18 @@ body {
   cursor: pointer;
   color: black;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #009acd;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 14px;
+  color: #aaa;
 }
 </style>
 </head>
@@ -63,35 +82,37 @@ body {
 <body>
 
 <div class="header">SkyIL RolePlay Store</div>
+<div class="sub">ברוכים הבאים לחנות הרשמית של השרת 🔥</div>
 
 <div class="container">
 
+  <!-- VIP -->
   <div class="card">
     <h2>VIP GOLD</h2>
     <p>VIP + הטבות מיוחדות</p>
     <div class="price">₪25</div>
-    <button class="btn" onclick="buy('vip')">קנה עכשיו</button>
+    
+    <a href="https://paypal.me/saharshevach/25" target="_blank">
+      <button class="btn">קנה עכשיו</button>
+    </a>
   </div>
 
+  <!-- כסף -->
   <div class="card">
     <h2>100K כסף</h2>
     <p>כסף לשרת</p>
     <div class="price">₪10</div>
-    <button class="btn" onclick="buy('money')">קנה עכשיו</button>
+    
+    <a href="https://paypal.me/saharshevach/10" target="_blank">
+      <button class="btn">קנה עכשיו</button>
+    </a>
   </div>
 
 </div>
 
-<script>
-function buy(product) {
-  if(product === 'vip'){
-    window.open("https://paypal.me/saharshevach/25");
-  }
-  if(product === 'money'){
-    window.open("https://paypal.me/saharshevach/10");
-  }
-}
-</script>
+<div class="footer">
+© SkyIL RolePlay - כל הזכויות שמורות
+</div>
 
 </body>
 </html>
