@@ -5,27 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkyIL Store</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  display: flex;
-  background: #0f2027;
+  font-family: 'Rubik', sans-serif;
+  background: url('https://cdn.discordapp.com/attachments/1489011812862001192/1494057297289281606/ChatGPT_Image_Apr_15_2026_09_36_19_PM.png') no-repeat center center fixed;
+  background-size: cover;
   color: white;
 }
 
-/* תפריט צד */
+/* שכבת כהות */
+.overlay {
+  background: rgba(0,0,0,0.7);
+  min-height: 100vh;
+  display: flex;
+}
+
+/* תפריט */
 .sidebar {
   width: 220px;
-  background: #111;
-  height: 100vh;
-  position: fixed;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  padding-top: 20px;
 }
 
 .sidebar h2 {
   text-align: center;
   color: #00bfff;
-  margin-top: 20px;
 }
 
 .sidebar a {
@@ -33,7 +41,7 @@ body {
   padding: 15px;
   color: white;
   text-decoration: none;
-  cursor: pointer;
+  transition: 0.3s;
 }
 
 .sidebar a:hover {
@@ -43,50 +51,65 @@ body {
 
 /* תוכן */
 .content {
-  margin-right: 220px;
-  padding: 20px;
-  width: 100%;
+  flex: 1;
+  padding: 30px;
 }
 
 .section { display: none; }
 .active { display: block; }
 
 .title {
-  font-size: 35px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 
 /* כרטיסים */
 .container {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .card {
-  background: #111;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 20px;
-  border-radius: 15px;
-  width: 250px;
+  width: 260px;
   text-align: center;
+  box-shadow: 0 0 20px rgba(0,191,255,0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 40px rgba(0,191,255,0.8);
 }
 
 .card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
+  height: 150px;
+  object-fit: cover;
 }
 
 .price {
-  font-size: 20px;
+  font-size: 22px;
   margin: 10px 0;
+  color: #00bfff;
 }
 
 .btn {
   background: #00bfff;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #009acd;
 }
 
 /* בקרוב */
@@ -101,11 +124,13 @@ body {
 
 <body>
 
+<div class="overlay">
+
 <div class="sidebar">
   <h2>SkyIL</h2>
   <a onclick="show('home')">🏠 בית</a>
   <a onclick="show('cars')">🚗 רכבים</a>
-  <a onclick="show('money')">💰 חבילות כסף</a>
+  <a onclick="show('money')">💰 כסף</a>
   <a onclick="show('unban')">🔓 אנבאן</a>
   <a onclick="show('pads')">📦 פדים</a>
 </div>
@@ -114,61 +139,46 @@ body {
 
 <!-- בית -->
 <div id="home" class="section active">
-  <div class="title">ברוכים הבאים 🔥</div>
-  <p>
-  זה האתר הרשמי של SkyIL RolePlay  
-  כאן תוכלו לקנות רכבים, כסף ואנבאן  
-  כל קנייה תומכת בפיתוח השרת ❤️
-  </p>
+  <div class="title">SkyIL RolePlay 🔥</div>
+  <p>ברוכים הבאים לחנות הרשמית של השרת  
+  כאן תוכלו לרכוש רכבים, כסף ואנבאן  
+  ולהתקדם בשרת 🔥</p>
 </div>
 
 <!-- רכבים -->
 <div id="cars" class="section">
   <div class="title">🚗 רכבים</div>
-
   <div class="container">
+
     <div class="card">
-      <img src="https://i.imgur.com/1Xq9biB.jpg">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
       <h3>רכב קאסטום</h3>
       <div class="price">₪30</div>
       <a href="https://paypal.me/saharshevach/30" target="_blank">
-        <button class="btn">קנה עכשיו</button>
+        <button class="btn">קנה</button>
       </a>
     </div>
+
   </div>
 </div>
 
 <!-- כסף -->
 <div id="money" class="section">
-  <div class="title">💰 חבילות כסף</div>
-
+  <div class="title">💰 כסף</div>
   <div class="container">
 
     <div class="card">
-      <img src="https://i.imgur.com/8Km9tLL.png">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1">
       <h3>100K</h3>
       <div class="price">₪10</div>
-      <a href="https://paypal.me/saharshevach/10" target="_blank">
-        <button class="btn">קנה</button>
-      </a>
+      <a href="https://paypal.me/saharshevach/10"><button class="btn">קנה</button></a>
     </div>
 
     <div class="card">
-      <img src="https://i.imgur.com/8Km9tLL.png">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1">
       <h3>500K</h3>
       <div class="price">₪25</div>
-      <a href="https://paypal.me/saharshevach/25" target="_blank">
-        <button class="btn">קנה</button>
-      </a>
-    </div>
-
-    <div class="card">
-      <img src="https://i.imgur.com/8Km9tLL.png">
-      <h3>1M</h3>
-      <div class="price">₪50</div>
-      <a href="https://paypal.me/saharshevach/50" target="_blank">
-        <button class="btn">קנה</button>
-      </a>
+      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
     </div>
 
   </div>
@@ -177,7 +187,6 @@ body {
 <!-- אנבאן -->
 <div id="unban" class="section">
   <div class="title">🔓 אנבאן</div>
-
   <div class="container">
 
     <div class="card">
@@ -189,30 +198,9 @@ body {
 
     <div class="card">
       <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>שבוע - חודש</h3>
-      <div class="price">₪25</div>
-      <a href="https://paypal.me/saharshevach/25"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>חודש - חצי שנה</h3>
-      <div class="price">₪50</div>
-      <a href="https://paypal.me/saharshevach/50"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
       <h3>פרמה</h3>
       <div class="price">₪100</div>
       <a href="https://paypal.me/saharshevach/100"><button class="btn">קנה</button></a>
-    </div>
-
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1430533329152774316/1495331527553318962/image.png">
-      <h3>אנטי צ'יט</h3>
-      <div class="price">₪150</div>
-      <a href="https://paypal.me/saharshevach/150"><button class="btn">קנה</button></a>
     </div>
 
   </div>
@@ -223,6 +211,7 @@ body {
   <div class="coming">בקרוב...</div>
 </div>
 
+</div>
 </div>
 
 <script>
