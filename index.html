@@ -437,6 +437,14 @@ function show(section) {
 }
 
 function openProduct(name, price, img, desc) {
+
+  /* סאונד לחיצה */
+  const click = document.getElementById("clickSound");
+  if (click) {
+    click.currentTime = 0;
+    click.play().catch(()=>{});
+  }
+
   document.getElementById("modal").style.display = "flex";
 
   document.getElementById("pname").innerText = name;
@@ -444,14 +452,17 @@ function openProduct(name, price, img, desc) {
   document.getElementById("pimg").src = img;
   document.getElementById("pdesc").innerText = desc;
 
-  document.getElementById("openSound").play();
-
   currentPrice = price;
 }
 
 function closeProduct() {
   document.getElementById("modal").style.display = "none";
-  document.getElementById("closeSound").play();
+
+  const close = document.getElementById("closeSound");
+  if (close) {
+    close.currentTime = 0;
+    close.play().catch(()=>{});
+  }
 }
 
 function buy() {
@@ -469,11 +480,6 @@ function buy() {
 
 <audio id="closeSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b4f7f2dcb.mp3?filename=ui-click-124476.mp3"></audio>
 
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
-    document.getElementById("clickSound").play();
-  });
-});
 </script>
 
 
