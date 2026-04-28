@@ -18,7 +18,8 @@ body {
 
 /* רקע */
 .overlay {
-  background: radial-gradient(circle at top, rgba(0,191,255,0.15), transparent), rgba(0,0,0,0.9);
+  background: radial-gradient(circle at top, rgba(0,191,255,0.15), transparent),
+              rgba(0,0,0,0.9);
   min-height: 100vh;
   display: flex;
 }
@@ -132,10 +133,6 @@ body {
   text-align: center;
 }
 
-.modal img {
-  width: 100%;
-}
-
 /* X */
 .close {
   position: absolute;
@@ -152,7 +149,6 @@ body {
   cursor: pointer;
 }
 
-/* כפתור */
 .btn {
   background: #00bfff;
   border: none;
@@ -191,17 +187,22 @@ body {
 
 <div class="content">
 
+<!-- תקנון -->
 <div id="home" class="section active">
   <div class="fullscreen-rules">
     <h1>📜 תקנון</h1>
-    <p>ברוכים הבאים ל SkyIL</p>
+    <p>ברוכים הבאים לאתר הקהילה שלנו SkyIL</p>
+    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד</p>
+    <p><a href="https://discord.gg/TXujcHys" target="_blank">כניסה לדיסקורד</a></p>
+    <p>אין החזרים!</p>
   </div>
 </div>
 
+<!-- רכבים -->
 <div id="cars" class="section">
   <h1>🚗 רכבים</h1>
   <div class="container">
-    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','מהירות 350+')">
+    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','🚀 350+ קמש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים')">
       <img src="car.png">
       <h3>רכב קאסטום</h3>
       <p class="price">₪50</p>
@@ -209,51 +210,26 @@ body {
   </div>
 </div>
 
+<!-- כסף -->
 <div id="money" class="section">
   <h1>💰 כסף</h1>
   <div class="container">
-
-    <div class="card" onclick="openProduct('100K',10,'cash.png','חבילת כסף')">
-      <img src="cash.png">
-      <h3>100K</h3>
-      <p class="price">₪10</p>
-    </div>
-
-    <div class="card" onclick="openProduct('250K',25,'cash.png','חבילת כסף')">
-      <img src="cash.png">
-      <h3>250K</h3>
-      <p class="price">₪25</p>
-    </div>
-
-    <div class="card" onclick="openProduct('500K',50,'cash.png','חבילת כסף')">
-      <img src="cash.png">
-      <h3>500K</h3>
-      <p class="price">₪50</p>
-    </div>
-
-    <div class="card" onclick="openProduct('1M',70,'cash.png','חבילת כסף')">
-      <img src="cash.png">
-      <h3>1M</h3>
-      <p class="price">₪70</p>
-    </div>
-
+    <div class="card" onclick="openProduct('100K',10,'cash.png','חבילה בסיסית')"><img src="cash.png"><p>100K</p></div>
+    <div class="card" onclick="openProduct('250K',25,'cash.png','חבילה בינונית')"><img src="cash.png"><p>250K</p></div>
+    <div class="card" onclick="openProduct('500K',50,'cash.png','חבילה מתקדמת')"><img src="cash.png"><p>500K</p></div>
+    <div class="card" onclick="openProduct('1M',70,'cash.png','חבילת פרימיום')"><img src="cash.png"><p>1M</p></div>
   </div>
 </div>
 
+<!-- אנבאן -->
 <div id="unban" class="section">
   <h1>🔓 אנבאן</h1>
   <div class="container">
-
-    <div class="card" onclick="openProduct('1-6 ימים',10,'unban.png','אנבאן קצר')">
-      <img src="unban.png">
-      <p class="price">₪10</p>
-    </div>
-
-    <div class="card" onclick="openProduct('6-18 ימים',25,'unban.png','אנבאן בינוני')">
-      <img src="unban.png">
-      <p class="price">₪25</p>
-    </div>
-
+    <div class="card" onclick="openProduct('1-6 ימים',10,'unban.png','אנבאן קצר')"><img src="unban.png"></div>
+    <div class="card" onclick="openProduct('6-18 ימים',25,'unban.png','אנבאן בינוני')"><img src="unban.png"></div>
+    <div class="card" onclick="openProduct('חודשיים+',40,'unban.png','אנבאן ארוך')"><img src="unban.png"></div>
+    <div class="card" onclick="openProduct('פרמה',100,'unban.png','קבוע')"><img src="unban.png"></div>
+    <div class="card" onclick="openProduct('אנטי ציט',150,'unban.png','הגנה')"><img src="unban.png"></div>
   </div>
 </div>
 
@@ -275,7 +251,7 @@ body {
 <!-- דיסקורד -->
 <a href="https://discord.gg/TXujcHys" target="_blank" class="discord-btn">
   <svg viewBox="0 0 127 96" width="28" fill="white">
-    <path d="..."/>
+    <path d="M107.7 8.07A105.15 105.15 0 0081.47 0..."/>
   </svg>
 </a>
 
@@ -285,7 +261,6 @@ let currentPrice = 0;
 function show(section, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(section).classList.add('active');
-
   document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
   el.classList.add('active');
 }
@@ -307,11 +282,8 @@ function buy() {
   window.open("https://paypal.me/saharshevach/" + currentPrice);
 }
 
-/* סגירה בלחיצה בחוץ */
 window.onclick = function(e) {
-  if (e.target === document.getElementById("modal")) {
-    closeProduct();
-  }
+  if (e.target === document.getElementById("modal")) closeProduct();
 }
 </script>
 
