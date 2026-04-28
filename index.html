@@ -313,6 +313,7 @@ body {
   <a onclick="show('home')">📜 תקנון</a>
   <a onclick="show('cars')">🚗 רכבים</a>
   <a onclick="show('money')">💰 כסף</a>
+  <a onclick="show('weapons')">🔫 נשקים</a>
   <a onclick="show('unban')">🔓 אנבאן</a>
   <a onclick="show('pads')">📦 פדים</a>
 </div>
@@ -405,6 +406,64 @@ body {
 
   </div>
 </div>
+
+  <!-- נשקים -->
+<div id="weapons" class="section">
+  <h1>🔫 נשקים</h1>
+
+  <div class="container">
+
+    <!-- 10 ספיישלים -->
+    <div class="card" onclick="openProduct(
+      '10 ספיישלים',
+      15,
+      'weapon.png',
+      '🔫 10 ספיישלים עם משתיק + 300 כדורים לרייפל'
+    )">
+      <img src="weapon.png">
+      <h3>10 ספיישלים</h3>
+      <p class="price">₪15</p>
+    </div>
+
+    <!-- 30 ספיישלים -->
+    <div class="card" onclick="openProduct(
+      '30 ספיישלים',
+      50,
+      'weapon.png',
+      '💣 30 ספיישלים עם משתיק + 1300 כדורים לרייפל'
+    )">
+      <img src="weapon.png">
+      <h3>30 ספיישלים</h3>
+      <p class="price">₪50</p>
+    </div>
+
+    <!-- פיסטול -->
+    <div class="card" onclick="openProduct(
+      '20 פיסטול חמישים',
+      10,
+      'pistol.png',
+      '🔫 20 פיסטול חמישים עם משתיק + 300 כדורים לפיסטול'
+    )">
+      <img src="pistol.png">
+      <h3>20 פיסטול</h3>
+      <p class="price">₪10</p>
+    </div>
+
+    <!-- מיקרו -->
+    <div class="card" onclick="openProduct(
+      '30 מיקרו SMG',
+      30,
+      'micro.png',
+      '⚡ 30 מיקרו עם משתיק + 700 כדורים לפיסטול'
+    )">
+      <img src="micro.png">
+      <h3>30 מיקרו</h3>
+      <p class="price">₪30</p>
+    </div>
+
+  </div>
+</div>
+  
 <!-- אנבאן -->
 <div id="unban" class="section">
   <h1>🔓 אנבאן</h1>
