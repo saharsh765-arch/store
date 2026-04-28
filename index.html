@@ -192,6 +192,7 @@ body {
   border: 1px solid rgba(0,191,255,0.3);
   box-shadow: 0 0 60px rgba(0,191,255,0.8);
   animation: zoomIn 0.3s ease;
+  position: relative;
 }
 
 .modal img {
@@ -443,6 +444,12 @@ function closeProduct() {
 
 function buy() {
   window.open("https://paypal.me/saharshevach/" + currentPrice);
+}
+  window.onclick = function(e) {
+  const modal = document.getElementById("modal");
+  if (e.target === modal) {
+    closeProduct();
+  }
 }
 </script>
 
