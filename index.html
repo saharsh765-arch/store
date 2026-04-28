@@ -437,32 +437,16 @@ function show(section) {
 }
 
 function openProduct(name, price, img, desc) {
-
-  /* סאונד לחיצה */
-  const click = document.getElementById("clickSound");
-  if (click) {
-    click.currentTime = 0;
-    click.play().catch(()=>{});
-  }
-
   document.getElementById("modal").style.display = "flex";
-
   document.getElementById("pname").innerText = name;
   document.getElementById("pprice").innerText = "₪" + price;
   document.getElementById("pimg").src = img;
   document.getElementById("pdesc").innerText = desc;
-
   currentPrice = price;
 }
 
 function closeProduct() {
   document.getElementById("modal").style.display = "none";
-
-  const close = document.getElementById("closeSound");
-  if (close) {
-    close.currentTime = 0;
-    close.play().catch(()=>{});
-  }
 }
 
 function buy() {
@@ -474,12 +458,6 @@ function buy() {
     closeProduct();
   }
 }
-  <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c2f3d4e66.mp3?filename=click-124467.mp3"></audio>
-
-<audio id="openSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b4f7f2dcb.mp3?filename=ui-click-124476.mp3"></audio>
-
-<audio id="closeSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b4f7f2dcb.mp3?filename=ui-click-124476.mp3"></audio>
-
 </script>
 
 
