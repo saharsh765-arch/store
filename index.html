@@ -14,9 +14,10 @@ body {
   background: url('sky.png') no-repeat center;
   background-size: cover;
   color: white;
+  overflow-x: hidden;
 }
 
-/* רקע */
+/* רקע משודרג */
 .overlay {
   background: radial-gradient(circle at top, rgba(0,191,255,0.15), transparent),
               rgba(0,0,0,0.9);
@@ -24,10 +25,11 @@ body {
   display: flex;
 }
 
-/* 🔥 תפריט צד */
+/* תפריט צד */
 .sidebar {
-  width: 240px;
-  background: linear-gradient(180deg, #050505, #0f0f0f);
+  width: 230px;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(15px);
   border-right: 1px solid rgba(0,191,255,0.3);
 }
 
@@ -36,28 +38,29 @@ body {
   color: #00bfff;
   padding: 20px;
   font-size: 26px;
+  letter-spacing: 2px;
   text-shadow: 0 0 15px #00bfff;
 }
 
 .sidebar a {
   display: block;
   padding: 15px;
-  margin: 8px;
-  border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
+  border-left: 3px solid transparent;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-  background: rgba(0,191,255,0.2);
-  transform: translateX(5px);
+.sidebar a:hover {
+  background: rgba(0,191,255,0.1);
+  border-left: 3px solid #00bfff;
+  transform: translateX(6px);
 }
 
 /* תוכן */
 .content {
   flex: 1;
   padding: 30px;
+  animation: fadeIn 0.6s ease;
 }
 
 .section { display: none; }
@@ -65,50 +68,77 @@ body {
 
 /* תקנון */
 .fullscreen-rules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .fullscreen-rules h1 {
-  font-size: 50px;
+  font-size: 55px;
   color: #00bfff;
+  text-shadow: 0 0 25px rgba(0,191,255,0.9);
 }
 
 .fullscreen-rules p {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
 }
 
 /* כרטיסים */
 .container {
   display: flex;
+  gap: 25px;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
 }
 
 .card {
-  width: 260px;
-  padding: 20px;
+  background: linear-gradient(145deg, rgba(0,0,0,0.7), rgba(20,20,20,0.9));
   border-radius: 20px;
-  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  width: 260px;
+  text-align: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.4s;
+  border: 1px solid rgba(0,191,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(0,191,255,0.3), transparent);
+  top: -50%;
+  left: -50%;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px #00bfff;
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 0 45px rgba(0,191,255,0.9);
 }
 
 .card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .price {
   color: #00bfff;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00bfff;
 }
 
 /* מודאל */
@@ -118,57 +148,66 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0,0,0,0.95);
   display: none;
-  background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(10px);
 }
 
 .modal-content {
-  position: relative;
-  background: #111;
-  padding: 20px;
+  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+  padding: 25px;
   border-radius: 20px;
   width: 350px;
   text-align: center;
+  border: 1px solid rgba(0,191,255,0.3);
+  box-shadow: 0 0 60px rgba(0,191,255,0.8);
+  animation: zoomIn 0.3s ease;
 }
 
-/* X */
-.close {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 40px;
-  height: 40px;
-  background: #111;
-  border: 2px solid #00bfff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.modal img {
+  width: 100%;
+  border-radius: 12px;
 }
 
 .btn {
-  background: #00bfff;
+  background: linear-gradient(90deg, #00bfff, #0077ff);
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* דיסקורד */
-.discord-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  background: #5865F2;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #00bfff;
+}
+
+.close {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* אנימציות */
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(15px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.8); opacity:0;}
+  to {transform: scale(1); opacity:1;}
+}
+
+.coming {
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 0 0 25px #00bfff;
 }
 </style>
 </head>
@@ -179,10 +218,11 @@ body {
 
 <div class="sidebar">
   <h2>SkyIL</h2>
-  <a onclick="show('home', this)" class="active">📜 תקנון</a>
-  <a onclick="show('cars', this)">🚗 רכבים</a>
-  <a onclick="show('money', this)">💰 כסף</a>
-  <a onclick="show('unban', this)">🔓 אנבאן</a>
+  <a onclick="show('home')">📜 תקנון</a>
+  <a onclick="show('cars')">🚗 רכבים</a>
+  <a onclick="show('money')">💰 כסף</a>
+  <a onclick="show('unban')">🔓 אנבאן</a>
+  <a onclick="show('pads')">📦 פדים</a>
 </div>
 
 <div class="content">
@@ -190,11 +230,18 @@ body {
 <!-- תקנון -->
 <div id="home" class="section active">
   <div class="fullscreen-rules">
-    <h1>📜 תקנון</h1>
+    <h1>📜 תקנון SkyIL</h1>
     <p>ברוכים הבאים לאתר הקהילה שלנו SkyIL</p>
-    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד</p>
-    <p><a href="https://discord.gg/TXujcHys" target="_blank">כניסה לדיסקורד</a></p>
-    <p>אין החזרים!</p>
+    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד לאישור ורק לאחר מכן לקנות</p>
+    <p>
+      קישור לדיסקורד:
+      <a href="https://discord.gg/TXujcHys" target="_blank" style="color:#00bfff;">
+        לחץ כאן
+      </a>
+    </p>
+    <p>לאחר קנייה אין אפשרות לקבל החזר גם לא דרך פייפאל (רק חריגים)</p>
+    <p>ריפאונד = פרמה עד להחזר הכסף</p>
+    <p style="color:#00ff88;">המשך חווית קנייה מהנה ❤️</p>
   </div>
 </div>
 
@@ -202,7 +249,7 @@ body {
 <div id="cars" class="section">
   <h1>🚗 רכבים</h1>
   <div class="container">
-    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','🚀 350+ קמש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים')">
+    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','🚀 מהירות: 350+ קמ״ש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים')">
       <img src="car.png">
       <h3>רכב קאסטום</h3>
       <p class="price">₪50</p>
@@ -214,10 +261,11 @@ body {
 <div id="money" class="section">
   <h1>💰 כסף</h1>
   <div class="container">
-    <div class="card" onclick="openProduct('100K',10,'cash.png','חבילה בסיסית')"><img src="cash.png"><p>100K</p></div>
-    <div class="card" onclick="openProduct('250K',25,'cash.png','חבילה בינונית')"><img src="cash.png"><p>250K</p></div>
-    <div class="card" onclick="openProduct('500K',50,'cash.png','חבילה מתקדמת')"><img src="cash.png"><p>500K</p></div>
-    <div class="card" onclick="openProduct('1M',70,'cash.png','חבילת פרימיום')"><img src="cash.png"><p>1M</p></div>
+    <div class="card" onclick="openProduct('10K כסף',10,'money.png','כסף בסיסי לשרת')">
+      <img src="money.png">
+      <h3>10K</h3>
+      <p class="price">₪10</p>
+    </div>
   </div>
 </div>
 
@@ -225,12 +273,43 @@ body {
 <div id="unban" class="section">
   <h1>🔓 אנבאן</h1>
   <div class="container">
-    <div class="card" onclick="openProduct('1-6 ימים',10,'unban.png','אנבאן קצר')"><img src="unban.png"></div>
-    <div class="card" onclick="openProduct('6-18 ימים',25,'unban.png','אנבאן בינוני')"><img src="unban.png"></div>
-    <div class="card" onclick="openProduct('חודשיים+',40,'unban.png','אנבאן ארוך')"><img src="unban.png"></div>
-    <div class="card" onclick="openProduct('פרמה',100,'unban.png','קבוע')"><img src="unban.png"></div>
-    <div class="card" onclick="openProduct('אנטי ציט',150,'unban.png','הגנה')"><img src="unban.png"></div>
+
+    <div class="card" onclick="openProduct('אנבאן 1-6 ימים',10,'unban.png','פתיחת באן קצרה')">
+      <img src="unban.png">
+      <h3>1-6 ימים</h3>
+      <p class="price">₪10</p>
+    </div>
+
+    <div class="card" onclick="openProduct('אנבאן 6-18 ימים',25,'unban.png','פתיחת באן בינונית')">
+      <img src="unban.png">
+      <h3>6-18 ימים</h3>
+      <p class="price">₪25</p>
+    </div>
+
+    <div class="card" onclick="openProduct('חודשיים - חצי שנה',40,'unban.png','פתיחת באן ארוכה')">
+      <img src="unban.png">
+      <h3>חודשיים - חצי שנה</h3>
+      <p class="price">₪40</p>
+    </div>
+
+    <div class="card" onclick="openProduct('פרמה',100,'unban.png','הסרת באן מלאה')">
+      <img src="unban.png">
+      <h3>פרמה</h3>
+      <p class="price">₪100</p>
+    </div>
+
+    <div class="card" onclick="openProduct('אנטי ציט',150,'unban.png','הגנה מלאה')">
+      <img src="unban.png">
+      <h3>אנטי ציט</h3>
+      <p class="price">₪150</p>
+    </div>
+
   </div>
+</div>
+
+<!-- פדים -->
+<div id="pads" class="section">
+  <div class="coming">בקרוב...</div>
 </div>
 
 </div>
@@ -239,30 +318,21 @@ body {
 <!-- מודאל -->
 <div id="modal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeProduct()">✕</span>
+    <span class="close" onclick="closeProduct()">✖</span>
     <img id="pimg">
     <h2 id="pname"></h2>
     <p id="pprice"></p>
     <p id="pdesc"></p>
-    <button class="btn" onclick="buy()">קנה</button>
+    <button class="btn" onclick="buy()">קנה עכשיו</button>
   </div>
 </div>
-
-<!-- דיסקורד -->
-<a href="https://discord.gg/TXujcHys" target="_blank" class="discord-btn">
-  <svg viewBox="0 0 127 96" width="28" fill="white">
-    <path d="M107.7 8.07A105.15 105.15 0 0081.47 0..."/>
-  </svg>
-</a>
 
 <script>
 let currentPrice = 0;
 
-function show(section, el) {
+function show(section) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(section).classList.add('active');
-  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-  el.classList.add('active');
 }
 
 function openProduct(name, price, img, desc) {
@@ -280,10 +350,6 @@ function closeProduct() {
 
 function buy() {
   window.open("https://paypal.me/saharshevach/" + currentPrice);
-}
-
-window.onclick = function(e) {
-  if (e.target === document.getElementById("modal")) closeProduct();
 }
 </script>
 
