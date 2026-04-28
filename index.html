@@ -5,92 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkyIL Store</title>
 
-<a href="https://discord.gg/TXujcHys" target="_blank" class="discord-btn">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" width="28" height="28" fill="white">
-    <path d="M107.7 8.07A105.15 105.15 0 0081.47 0a72.06 72.06 0 00-3.36 6.83 97.68 97.68 0 00-29.08 0A72.37 72.37 0 0045.66 0 105.89 105.89 0 0019.39 8.07C2.79 33.35-2.2 58.03.32 82.34a105.73 105.73 0 0032.17 16.3 77.7 77.7 0 006.9-11.3 68.42 68.42 0 01-10.87-5.19c.91-.67 1.8-1.38 2.66-2.12a75.57 75.57 0 0068.68 0c.87.74 1.76 1.45 2.66 2.12a68.68 68.68 0 01-10.87 5.19 77.7 77.7 0 006.9 11.3 105.25 105.25 0 0032.17-16.3c2.94-28.08-5.03-52.53-22.3-74.27zM42.45 65.69c-6.27 0-11.42-5.73-11.42-12.8s5.05-12.8 11.42-12.8c6.37 0 11.52 5.73 11.42 12.8 0 7.07-5.05 12.8-11.42 12.8zm42.24 0c-6.27 0-11.42-5.73-11.42-12.8s5.05-12.8 11.42-12.8c6.37 0 11.52 5.73 11.42 12.8 0 7.07-5.05 12.8-11.42 12.8z"/>
-  </svg>
-</a>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
   background: url('sky.png') no-repeat center;
   background-size: cover;
   color: white;
-  overflow-x: hidden;
 }
 
-/* רקע משודרג */
+/* רקע */
 .overlay {
-  background: radial-gradient(circle at top, rgba(0,191,255,0.15), transparent),
-              rgba(0,0,0,0.9);
+  background: radial-gradient(circle at top, rgba(0,191,255,0.15), transparent), rgba(0,0,0,0.9);
   min-height: 100vh;
   display: flex;
 }
 
-/* 🔥 תפריט צד מטורף */
+/* 🔥 תפריט צד */
 .sidebar {
   width: 240px;
   background: linear-gradient(180deg, #050505, #0f0f0f);
-  backdrop-filter: blur(15px);
   border-right: 1px solid rgba(0,191,255,0.3);
-  box-shadow: 0 0 30px rgba(0,191,255,0.2);
 }
 
 .sidebar h2 {
   text-align: center;
   color: #00bfff;
-  padding: 25px 0;
-  font-size: 28px;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px #00bfff;
+  padding: 20px;
+  font-size: 26px;
+  text-shadow: 0 0 15px #00bfff;
 }
 
-/* כפתורים */
 .sidebar a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 20px;
-  margin: 8px 10px;
-  border-radius: 12px;
+  display: block;
+  padding: 15px;
+  margin: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
-  font-weight: bold;
-  position: relative;
-  overflow: hidden;
 }
 
-/* glow פנימי */
-.sidebar a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(0,191,255,0.3), transparent);
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.sidebar a:hover::before {
-  opacity: 1;
-}
-
-.sidebar a:hover {
-  background: rgba(0,191,255,0.1);
-  transform: translateX(8px);
-  box-shadow: 0 0 20px rgba(0,191,255,0.5);
-}
-
-/* מצב פעיל */
+.sidebar a:hover,
 .sidebar a.active {
-  background: linear-gradient(90deg, rgba(0,191,255,0.2), transparent);
-  border-left: 4px solid #00bfff;
-  box-shadow: 0 0 25px rgba(0,191,255,0.6);
+  background: rgba(0,191,255,0.2);
+  transform: translateX(5px);
 }
+
 /* תוכן */
 .content {
   flex: 1;
   padding: 30px;
-  animation: fadeIn 0.6s ease;
 }
 
 .section { display: none; }
@@ -98,118 +64,52 @@ body {
 
 /* תקנון */
 .fullscreen-rules {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
 .fullscreen-rules h1 {
-  font-size: 55px;
+  font-size: 50px;
   color: #00bfff;
-  text-shadow: 0 0 25px rgba(0,191,255,0.9);
 }
 
 .fullscreen-rules p {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 /* כרטיסים */
 .container {
   display: flex;
-  gap: 25px;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
 }
 
 .card {
-  background: linear-gradient(145deg, rgba(0,0,0,0.7), rgba(20,20,20,0.9));
-  border-radius: 20px;
-  padding: 20px;
   width: 260px;
-  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.7);
   cursor: pointer;
-  transition: 0.4s;
-  border: 1px solid rgba(0,191,255,0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(0,191,255,0.3), transparent);
-  top: -50%;
-  left: -50%;
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.card:hover::before {
-  opacity: 1;
+  transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 0 45px rgba(0,191,255,0.9);
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #00bfff;
 }
 
 .card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .price {
   color: #00bfff;
-  font-size: 22px;
-  font-weight: bold;
-  text-shadow: 0 0 10px #00bfff;
 }
 
-/* כפתור דיסקורד */
-..discord-btn svg {
-  width: 28px;
-  height: 28px;
-}
-
-  background: linear-gradient(135deg, #5865F2, #404EED);
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 28px;
-  color: white;
-  text-decoration: none;
-
-  box-shadow: 0 0 20px rgba(88,101,242,0.7);
-  transition: 0.3s;
-  z-index: 999;
-}
-
-/* hover */
-.discord-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 30px rgba(88,101,242,1);
-}
-
-/* אנימציה קטנה */
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px rgba(88,101,242,0.6); }
-  50% { box-shadow: 0 0 25px rgba(88,101,242,1); }
-  100% { box-shadow: 0 0 10px rgba(88,101,242,0.6); }
-}
-
-.discord-btn {
-  animation: pulse 2s infinite;
-}
-  
 /* מודאל */
 .modal {
   position: fixed;
@@ -217,100 +117,62 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.95);
   display: none;
+  background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
 }
 
 .modal-content {
-  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
-  padding: 25px;
+  position: relative;
+  background: #111;
+  padding: 20px;
   border-radius: 20px;
   width: 350px;
   text-align: center;
-  border: 1px solid rgba(0,191,255,0.3);
-  box-shadow: 0 0 60px rgba(0,191,255,0.8);
-  animation: zoomIn 0.3s ease;
-  position: relative;
 }
 
 .modal img {
   width: 100%;
-  border-radius: 12px;
 }
 
-.btn {
-  background: linear-gradient(90deg, #00bfff, #0077ff);
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #00bfff;
-}
-
+/* X */
 .close {
   position: absolute;
   top: -15px;
   right: -15px;
-
   width: 40px;
   height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   background: #111;
   border: 2px solid #00bfff;
   border-radius: 50%;
-
-  font-size: 20px;
-  color: #00bfff;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
-
-  box-shadow: 0 0 15px rgba(0,191,255,0.6);
 }
 
-/* hover */
-.close:hover {
+/* כפתור */
+.btn {
   background: #00bfff;
-  color: black;
-  transform: scale(1.2) rotate(90deg);
-  box-shadow: 0 0 25px #00bfff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.close:hover {
-  background: red;
-  color: white;
-  transform: scale(1.2) rotate(90deg);
-  box-shadow: 0 0 20px red;
-}
-/* אנימציות */
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(15px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
-@keyframes zoomIn {
-  from {transform: scale(0.8); opacity:0;}
-  to {transform: scale(1); opacity:1;}
-}
-
-.coming {
-  font-size: 60px;
-  text-align: center;
-  text-shadow: 0 0 25px #00bfff;
+/* דיסקורד */
+.discord-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: #5865F2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
 </head>
@@ -321,38 +183,25 @@ body {
 
 <div class="sidebar">
   <h2>SkyIL</h2>
-  <a onclick="show('home')">📜 תקנון</a>
-  <a onclick="show('cars')">🚗 רכבים</a>
-  <a onclick="show('money')">💰 כסף</a>
-  <a onclick="show('unban')">🔓 אנבאן</a>
-  <a onclick="show('pads')">📦 פדים</a>
+  <a onclick="show('home', this)" class="active">📜 תקנון</a>
+  <a onclick="show('cars', this)">🚗 רכבים</a>
+  <a onclick="show('money', this)">💰 כסף</a>
+  <a onclick="show('unban', this)">🔓 אנבאן</a>
 </div>
 
 <div class="content">
 
-<!-- תקנון -->
 <div id="home" class="section active">
   <div class="fullscreen-rules">
-    <h1>📜 תקנון SkyIL</h1>
-    <p>ברוכים הבאים לאתר הקהילה שלנו SkyIL</p>
-    <p>לפני כל קנייה חובה לפתוח טיקט בדיסקורד לאישור ורק לאחר מכן לקנות</p>
-    <p>
-      קישור לדיסקורד:
-      <a href="https://discord.gg/TXujcHys" target="_blank" style="color:#00bfff;">
-        לחץ כאן
-      </a>
-    </p>
-    <p>לאחר קנייה אין אפשרות לקבל החזר גם לא דרך פייפאל (רק חריגים)</p>
-    <p>ריפאונד = פרמה עד להחזר הכסף</p>
-    <p style="color:#00ff88;">המשך חווית קנייה מהנה ❤️</p>
+    <h1>📜 תקנון</h1>
+    <p>ברוכים הבאים ל SkyIL</p>
   </div>
 </div>
 
-<!-- רכבים -->
 <div id="cars" class="section">
   <h1>🚗 רכבים</h1>
   <div class="container">
-    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','🚀 מהירות: 350+ קמ״ש\n⚡ קפיצה + בוסט + מצנח\n🛡️ חלונות משוריינים')">
+    <div class="card" onclick="openProduct('רכב קאסטום',50,'car.png','מהירות 350+')">
       <img src="car.png">
       <h3>רכב קאסטום</h3>
       <p class="price">₪50</p>
@@ -360,55 +209,29 @@ body {
   </div>
 </div>
 
-<!-- כסף -->
 <div id="money" class="section">
   <h1>💰 כסף</h1>
-
   <div class="container">
 
-    <!-- 100K -->
-    <div class="card" onclick="openProduct(
-      '100K כסף',
-      10,
-      'cash.png',
-      '💵 חבילת כסף בסיסית להתחלה מהירה בשרת'
-    )">
+    <div class="card" onclick="openProduct('100K',10,'cash.png','חבילת כסף')">
       <img src="cash.png">
       <h3>100K</h3>
       <p class="price">₪10</p>
     </div>
 
-    <!-- 250K -->
-    <div class="card" onclick="openProduct(
-      '250K כסף',
-      25,
-      'cash.png',
-      '💰 חבילה בינונית לשדרוג חווית המשחק'
-    )">
+    <div class="card" onclick="openProduct('250K',25,'cash.png','חבילת כסף')">
       <img src="cash.png">
       <h3>250K</h3>
       <p class="price">₪25</p>
     </div>
 
-    <!-- 500K -->
-    <div class="card" onclick="openProduct(
-      '500K כסף',
-      50,
-      'cash.png',
-      '💎 חבילת כסף גדולה לשחקנים מתקדמים'
-    )">
+    <div class="card" onclick="openProduct('500K',50,'cash.png','חבילת כסף')">
       <img src="cash.png">
       <h3>500K</h3>
       <p class="price">₪50</p>
     </div>
 
-    <!-- 1M -->
-    <div class="card" onclick="openProduct(
-      '1M כסף',
-      70,
-      'cash.png',
-      '🚀 חבילת פרימיום למקסימום התקדמות בשרת'
-    )">
+    <div class="card" onclick="openProduct('1M',70,'cash.png','חבילת כסף')">
       <img src="cash.png">
       <h3>1M</h3>
       <p class="price">₪70</p>
@@ -416,47 +239,22 @@ body {
 
   </div>
 </div>
-<!-- אנבאן -->
+
 <div id="unban" class="section">
   <h1>🔓 אנבאן</h1>
   <div class="container">
 
-    <div class="card" onclick="openProduct('אנבאן 1-6 ימים',10,'unban.png','פתיחת באן קצרה')">
+    <div class="card" onclick="openProduct('1-6 ימים',10,'unban.png','אנבאן קצר')">
       <img src="unban.png">
-      <h3>1-6 ימים</h3>
       <p class="price">₪10</p>
     </div>
 
-    <div class="card" onclick="openProduct('אנבאן 6-18 ימים',25,'unban.png','פתיחת באן בינונית')">
+    <div class="card" onclick="openProduct('6-18 ימים',25,'unban.png','אנבאן בינוני')">
       <img src="unban.png">
-      <h3>6-18 ימים</h3>
       <p class="price">₪25</p>
     </div>
 
-    <div class="card" onclick="openProduct('חודשיים - חצי שנה',40,'unban.png','פתיחת באן ארוכה')">
-      <img src="unban.png">
-      <h3>חודשיים - חצי שנה</h3>
-      <p class="price">₪40</p>
-    </div>
-
-    <div class="card" onclick="openProduct('פרמה',100,'unban.png','הסרת באן מלאה')">
-      <img src="unban.png">
-      <h3>פרמה</h3>
-      <p class="price">₪100</p>
-    </div>
-
-    <div class="card" onclick="openProduct('אנטי ציט',150,'unban.png','הגנה מלאה')">
-      <img src="unban.png">
-      <h3>אנטי ציט</h3>
-      <p class="price">₪150</p>
-    </div>
-
   </div>
-</div>
-
-<!-- פדים -->
-<div id="pads" class="section">
-  <div class="coming">בקרוב...</div>
 </div>
 
 </div>
@@ -465,24 +263,31 @@ body {
 <!-- מודאל -->
 <div id="modal" class="modal">
   <div class="modal-content">
-   <span class="close" onclick="closeProduct()">✕</span>
+    <span class="close" onclick="closeProduct()">✕</span>
     <img id="pimg">
     <h2 id="pname"></h2>
     <p id="pprice"></p>
     <p id="pdesc"></p>
-    <button class="btn" onclick="buy()">קנה עכשיו</button>
+    <button class="btn" onclick="buy()">קנה</button>
   </div>
 </div>
+
+<!-- דיסקורד -->
+<a href="https://discord.gg/TXujcHys" target="_blank" class="discord-btn">
+  <svg viewBox="0 0 127 96" width="28" fill="white">
+    <path d="..."/>
+  </svg>
+</a>
 
 <script>
 let currentPrice = 0;
 
-function show(section) {
+function show(section, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(section).classList.add('active');
 
   document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 
 function openProduct(name, price, img, desc) {
@@ -501,9 +306,10 @@ function closeProduct() {
 function buy() {
   window.open("https://paypal.me/saharshevach/" + currentPrice);
 }
-  window.onclick = function(e) {
-  const modal = document.getElementById("modal");
-  if (e.target === modal) {
+
+/* סגירה בלחיצה בחוץ */
+window.onclick = function(e) {
+  if (e.target === document.getElementById("modal")) {
     closeProduct();
   }
 }
