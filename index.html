@@ -438,15 +438,20 @@ function show(section) {
 
 function openProduct(name, price, img, desc) {
   document.getElementById("modal").style.display = "flex";
+
   document.getElementById("pname").innerText = name;
   document.getElementById("pprice").innerText = "₪" + price;
   document.getElementById("pimg").src = img;
   document.getElementById("pdesc").innerText = desc;
+
+  document.getElementById("openSound").play();
+
   currentPrice = price;
 }
 
 function closeProduct() {
   document.getElementById("modal").style.display = "none";
+  document.getElementById("closeSound").play();
 }
 
 function buy() {
@@ -458,7 +463,19 @@ function buy() {
     closeProduct();
   }
 }
+  <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c2f3d4e66.mp3?filename=click-124467.mp3"></audio>
+
+<audio id="openSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b4f7f2dcb.mp3?filename=ui-click-124476.mp3"></audio>
+
+<audio id="closeSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b4f7f2dcb.mp3?filename=ui-click-124476.mp3"></audio>
+
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    document.getElementById("clickSound").play();
+  });
+});
 </script>
+
 
   <a href="https://discord.gg/5ban" target="_blank" class="discord-btn">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" width="28" height="28" fill="white">
