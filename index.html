@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkyIL Store</title>
@@ -9,6 +10,9 @@
 
 <style>
 
+  .sidebar i {
+  margin-left: 8px;
+}
   .section {
   display: none;
   opacity: 0;
@@ -310,12 +314,12 @@ body {
 
 <div class="sidebar">
   <h2>SkyIL</h2>
-  <a onclick="show('home')">📜 תקנון</a>
-  <a onclick="show('cars')">🚗 רכבים</a>
-  <a onclick="show('money')">💰 כסף</a>
-  <a onclick="show('weapons')">🔫 נשקים</a>
-  <a onclick="show('unban')">🔓 אנבאן</a>
-  <a onclick="show('pads')">📦 פדים</a>
+  <i class="fa-solid fa-file-lines"></i> תקנון
+  <i class="fa-solid fa-car"></i> רכבים
+  <i class="fa-solid fa-sack-dollar"></i> כסף
+  <i class="fa-solid fa-gun"></i> נשקים
+  <i class="fa-solid fa-unlock"></i> אנבאן
+  <i class="fa-solid fa-box"></i> פדים
 </div>
 
 <div class="content">
