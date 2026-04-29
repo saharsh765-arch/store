@@ -341,6 +341,10 @@ body {
   <a onclick="show('weapons')">
   <i class="fa-solid fa-gun"></i> נשקים
 </a>
+
+  <a onclick="show('packages')">
+  <i class="fa-solid fa-box-open"></i> חבילות
+</a>
   
 <a onclick="show('unban')">
   <i class="fa-solid fa-unlock"></i> אנבאן
@@ -492,6 +496,51 @@ body {
       <img src="micro.png">
       <h3>30 מיקרו</h3>
       <p class="price">₪30</p>
+    </div>
+
+  </div>
+</div>
+
+  <!-- חבילות -->
+<div id="packages" class="section">
+  <h1>📦 חבילות</h1>
+
+  <div class="container">
+
+    <!-- חבילת התחלה -->
+    <div class="card" onclick="openProduct(
+      'חבילת התחלה',
+      15,
+      'play.png',
+      '💰 50 אלף שקל\n🔫 3 נשקים לבחירה\n🚗 רכב להתחלה'
+    )">
+      <img src="play.png">
+      <h3>חבילת התחלה</h3>
+      <p class="price">₪15</p>
+    </div>
+
+    <!-- חבילת מתקדם -->
+    <div class="card" onclick="openProduct(
+      'חבילת מתקדם',
+      30,
+      'good.png',
+      '💰 100 אלף שקל\n🔫 7 נשקים לבחירה\n🚗 רכב בסיסי'
+    )">
+      <img src="good.png">
+      <h3>חבילת מתקדם</h3>
+      <p class="price">₪30</p>
+    </div>
+
+    <!-- חבילת VIP -->
+    <div class="card" onclick="openProduct(
+      'חבילת VIP',
+      50,
+      'vip.png',
+      '💰 250 אלף שקל\n🔫 15 נשקים לבחירה\n🚗 רכב מטורף (לא קאסטום)'
+    )">
+      <img src="vip.png">
+      <h3>חבילת VIP</h3>
+      <p class="price">₪50</p>
     </div>
 
   </div>
