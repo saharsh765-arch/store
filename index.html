@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-let discount = 0;
 <html lang="he">
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -51,12 +50,6 @@ body {
 }
 
 /* תפריט צד */
-.sidebar {
-  width: 230px;
-  background: rgba(10,10,10,0.95);
-  backdrop-filter: blur(15px);
-  border-right: 1px solid rgba(0,191,255,0.3);
-}
 
 .sidebar h2 {
   text-align: center;
@@ -136,18 +129,6 @@ body {
 }
 
 /* אפקט אור */
-.card::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg, transparent, rgba(0,191,255,0.4), transparent);
-  top: -50%;
-  left: -50%;
-  transform: rotate(25deg);
-  opacity: 0;
-  transition: 0.5s;
-}
 
 .card:hover::before {
   opacity: 1;
@@ -601,7 +582,6 @@ body {
     <h2 id="pname"></h2>
     <p id="pprice"></p>
     <p id="pdesc"></p>
-    <p id="pdesc"></p>
 
 <input id="coupon" placeholder="הכנס קוד קופון" style="
 width: 100%;
@@ -616,13 +596,13 @@ text-align: center;
 
 <p id="couponMsg" style="margin-top:5px;"></p>
 
-<button class="btn" onclick="buy()">קנה עכשיו</button>
     <button class="btn" onclick="buy()">קנה עכשיו</button>
   </div>
 </div>
 
 <script>
 let currentPrice = 0;
+  let discount = 0;
 
 function applyCoupon() {
   const code = document.getElementById("coupon").value;
@@ -656,6 +636,9 @@ function openProduct(name, price, img, desc) {
   document.getElementById("pprice").innerText = "₪" + price;
   document.getElementById("pimg").src = img;
   document.getElementById("pdesc").innerText = desc;
+  discount = 0;
+document.getElementById("coupon").value = "";
+document.getElementById("couponMsg").innerText = "";
   currentPrice = price;
 }
 
