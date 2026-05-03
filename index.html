@@ -23,6 +23,92 @@ cursor:pointer;
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* פאנל אדמין */
+#admin h1 {
+  text-align: center;
+  text-shadow: 0 0 20px #00bfff;
+}
+
+/* אינפוטים */
+#admin input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin-top: 8px;
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  box-shadow: inset 0 0 10px rgba(0,191,255,0.2);
+  transition: 0.3s;
+}
+
+#admin input:focus {
+  box-shadow: 0 0 15px #00bfff;
+}
+
+/* כרטיסים */
+#admin .card {
+  background: linear-gradient(145deg, #0a0a0a, #151515);
+  border: 1px solid rgba(0,191,255,0.3);
+  box-shadow: 0 0 25px rgba(0,191,255,0.3);
+}
+
+/* רשימת קופונים */
+.coupon-item {
+  background: rgba(0,0,0,0.8);
+  border: 1px solid #00bfff;
+  border-radius: 15px;
+  padding: 12px;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+.coupon-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00bfff;
+}
+
+/* שם קופון */
+.coupon-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00bfff;
+}
+
+/* כפתורים */
+.coupon-actions button {
+  margin: 5px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* עריכה */
+.edit-btn {
+  background: #00bfff;
+  color: black;
+}
+
+.edit-btn:hover {
+  box-shadow: 0 0 15px #00bfff;
+}
+
+/* מחיקה */
+.delete-btn {
+  background: red;
+  color: white;
+}
+
+.delete-btn:hover {
+  box-shadow: 0 0 15px red;
+}
+  
   .sidebar i {
   color: #00bfff;
   font-size: 18px;
@@ -706,13 +792,16 @@ function adminLogin() {
 
 /* יצירת קופון */
 function createCoupon() {
-  const name = document.getElementById("cName").value;
-  const value = document.getElementById("cValue").value;
+  const name = document.getElementById("cName").value.trim();
+  const value = document.getElementById("cValue").value.trim();
 
   if (!name || !value) return alert("מלא הכל");
 
   coupons.push({ name, value });
   localStorage.setItem("coupons", JSON.stringify(coupons));
+
+  document.getElementById("cName").value = "";
+  document.getElementById("cValue").value = "";
 
   renderCoupons();
 }
@@ -724,17 +813,14 @@ function renderCoupons() {
 
   coupons.forEach((c, i) => {
     list.innerHTML += `
-      <div style="
-        background:#111;
-        padding:10px;
-        margin:5px;
-        border-radius:10px;
-        border:1px solid #00bfff;
-      ">
-        ${c.name} - ₪${c.value}
-        <br>
-        <button onclick="editCoupon(${i})">ערוך</button>
-        <button onclick="deleteCoupon(${i})">מחק</button>
+      <div class="coupon-item">
+        <div class="coupon-name">${c.name}</div>
+        <div>הנחה: ₪${c.value}</div>
+
+        <div class="coupon-actions">
+          <button class="edit-btn" onclick="editCoupon(${i})">ערוך</button>
+          <button class="delete-btn" onclick="deleteCoupon(${i})">מחק</button>
+        </div>
       </div>
     `;
   });
