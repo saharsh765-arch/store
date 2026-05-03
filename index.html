@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<button onclick="adminLogin()" style="
+position:fixed;
+top:10px;
+right:10px;
+z-index:9999;
+background:#111;
+color:#00bfff;
+border:none;
+padding:8px 12px;
+border-radius:10px;
+cursor:pointer;
+">
+🔒
+</button>
 <html lang="he">
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -337,6 +351,10 @@ body {
 </a>
 </div>
 
+  <a id="adminBtn" onclick="show('admin')" style="display:none;">
+  <i class="fa-solid fa-user-shield"></i> פאנל ניהול
+</a>
+
 <div class="content">
 
 <!-- תקנון -->
@@ -571,6 +589,26 @@ body {
   <div class="coming">בקרוב...</div>
 </div>
 
+  <div id="admin" class="section">
+  <h1>⚙️ פאנל ניהול קופונים</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <h3>יצירת קופון</h3>
+      <input id="cName" placeholder="שם קופון"><br><br>
+      <input id="cValue" placeholder="הנחה (₪)"><br><br>
+      <button class="btn" onclick="createCoupon()">צור קופון</button>
+    </div>
+
+    <div class="card" style="width:100%;">
+      <h3>רשימת קופונים</h3>
+      <div id="couponList"></div>
+    </div>
+
+  </div>
+</div>
+
 </div>
 </div>
 
@@ -607,16 +645,15 @@ let currentPrice = 0;
 function applyCoupon() {
   const code = document.getElementById("coupon").value;
 
-  if (code === "SAHAR10" && !localStorage.getItem("usedCoupon")) {
-    discount = 10;
+  const found = coupons.find(c => c.name === code);
+
+  if (found) {
+    discount = parseInt(found.value);
 
     document.getElementById("couponMsg").innerText = "✔ קופון הופעל!";
     document.getElementById("couponMsg").style.color = "lightgreen";
-
-    localStorage.setItem("usedCoupon", "true");
-
   } else {
-    document.getElementById("couponMsg").innerText = "❌ קוד לא תקין או כבר שומש";
+    document.getElementById("couponMsg").innerText = "❌ קוד לא תקין";
     document.getElementById("couponMsg").style.color = "red";
   }
 }
@@ -652,8 +689,77 @@ function buy() {
 
   window.open("https://paypal.me/saharshevach/" + finalPrice);
 }
-</script>
 
+  let coupons = JSON.parse(localStorage.getItem("coupons")) || [];
+
+/* התחברות */
+function adminLogin() {
+  const pass = prompt("סיסמה:");
+  if (pass === "1234") {
+    document.getElementById("adminBtn").style.display = "block";
+    alert("התחברת כאדמין");
+    renderCoupons();
+  } else {
+    alert("שגוי");
+  }
+}
+
+/* יצירת קופון */
+function createCoupon() {
+  const name = document.getElementById("cName").value;
+  const value = document.getElementById("cValue").value;
+
+  if (!name || !value) return alert("מלא הכל");
+
+  coupons.push({ name, value });
+  localStorage.setItem("coupons", JSON.stringify(coupons));
+
+  renderCoupons();
+}
+
+/* הצגה */
+function renderCoupons() {
+  const list = document.getElementById("couponList");
+  list.innerHTML = "";
+
+  coupons.forEach((c, i) => {
+    list.innerHTML += `
+      <div style="
+        background:#111;
+        padding:10px;
+        margin:5px;
+        border-radius:10px;
+        border:1px solid #00bfff;
+      ">
+        ${c.name} - ₪${c.value}
+        <br>
+        <button onclick="editCoupon(${i})">ערוך</button>
+        <button onclick="deleteCoupon(${i})">מחק</button>
+      </div>
+    `;
+  });
+}
+
+/* עריכה */
+function editCoupon(i) {
+  let newName = prompt("שם חדש:", coupons[i].name);
+  let newValue = prompt("הנחה חדשה:", coupons[i].value);
+
+  if (newName) coupons[i].name = newName;
+  if (newValue) coupons[i].value = newValue;
+
+  localStorage.setItem("coupons", JSON.stringify(coupons));
+  renderCoupons();
+}
+
+/* מחיקה */
+function deleteCoupon(i) {
+  coupons.splice(i, 1);
+  localStorage.setItem("coupons", JSON.stringify(coupons));
+  renderCoupons();
+}
+  
+</script>
 
   <a href="https://discord.gg/5ban" target="_blank" class="discord-btn">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" width="28" height="28" fill="white">
