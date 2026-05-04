@@ -752,6 +752,22 @@ text-align: center;
 let currentPrice = 0;
   let discount = 0;
 
+function openLogin() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.style.display = "flex";
+}
+
+function checkLogin() {
+  const pass = document.getElementById("adminPassInput").value;
+
+  if (pass === "1234") {
+    document.getElementById("adminBtn").style.display = "block";
+    document.getElementById("loginModal").style.display = "none";
+  } else {
+    alert("סיסמה שגויה");
+  }
+}
+  
 function applyCoupon() {
   const code = coupon.value;
 
