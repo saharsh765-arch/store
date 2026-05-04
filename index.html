@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<button onclick="openLogin()" class="admin-btn">
-  <i class="fa-solid fa-lock"></i>
-</button>
 <html lang="he">
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -420,6 +417,10 @@ body {
 
 <body>
 
+<button onclick="openLogin()" class="admin-btn">
+  <i class="fa-solid fa-lock"></i>
+</button>
+  
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <h2>כניסת אדמין</h2>
@@ -459,11 +460,12 @@ body {
   <a onclick="show('pads')">
   <i class="fa-solid fa-box"></i> פדים
 </a>
-</div>
 
   <a id="adminBtn" onclick="show('admin')" style="display:none;">
   <i class="fa-solid fa-user-shield"></i> פאנל ניהול
 </a>
+</div>
+
 
 <div class="content">
 
@@ -708,6 +710,8 @@ body {
       <h3>יצירת קופון</h3>
       <input id="cName" placeholder="שם קופון"><br><br>
       <input id="cValue" placeholder="הנחה (₪)"><br><br>
+      <input id="cUses" placeholder="כמות שימושים"><br><br>
+      <input id="cDate" type="תאריך"><br><br>
       <button class="btn" onclick="createCoupon()">צור קופון</button>
     </div>
 
@@ -771,14 +775,44 @@ function checkLogin() {
 function applyCoupon() {
   const code = coupon.value;
 
+  // ניקוי קופונים שפג תוקפם
   cleanCoupons();
 
   const found = coupons.find(c => c.name === code);
 
+  // קופון לא קיים
   if (!found) {
     couponMsg.innerText = "❌ לא תקין";
     return;
   }
+
+  // בדיקת תאריך
+  const today = new Date().toISOString().split("T")[0];
+
+  if (found.date && found.date < today) {
+    couponMsg.innerText = "❌ הקופון פג תוקף";
+    return;
+  }
+
+  // בדיקת כמות שימושים
+  if (found.uses !== undefined && found.uses <= 0) {
+    couponMsg.innerText = "❌ נגמרו כמות השימושים בקופון זה";
+    return;
+  }
+
+  // הפעלת ההנחה
+  discount = found.value;
+
+  // הורדת שימוש
+  if (found.uses !== undefined) {
+    found.uses--;
+  }
+
+  // שמירה
+  saveCoupons();
+
+  couponMsg.innerText = "✔ הופעל!";
+}
 
   if (found.uses !== undefined && found.uses <= 0) {
     couponMsg.innerText = "❌ נגמרו כמות השימושים בקופון זה";
@@ -830,16 +864,6 @@ function buy() {
 
   let coupons = JSON.parse(localStorage.getItem("coupons")) || [];
 
-/* התחברות */
-function adminLogin() {
-  const pass = prompt("סיסמה:");
-  if (pass === "1234") {
-    document.getElementById("adminBtn").style.display = "block";
-    alert("התחברת כאדמין");
-    renderCoupons();
-  } else {
-    alert("שגוי");
-  }
 }
 
 /* יצירת קופון */
@@ -849,7 +873,7 @@ function createCoupon() {
 
   if (!name || !value) return alert("מלא הכל");
 
-  coupons.push({ name, value });
+  coupons.push({ name, value, uses, date });
   localStorage.setItem("coupons", JSON.stringify(coupons));
 
   document.getElementById("cName").value = "";
@@ -917,36 +941,16 @@ function deleteCoupon(i) {
   renderCoupons();
 }
 
-  function openLogin() {
-  document.getElementById("loginModal").style.display = "flex";
+function saveCoupons() {
+  localStorage.setItem("coupons", JSON.stringify(coupons));
 }
 
-function checkLogin() {
-  const pass = document.getElementById("adminPassInput").value;
+function cleanCoupons() {
+  const today = new Date().toISOString().split("T")[0];
 
-  if (pass === "1234") {
-    document.getElementById("adminBtn").style.display = "block";
-    document.getElementById("loginModal").style.display = "none";
-    alert("התחברת כאדמין");
-  } else {
-    alert("סיסמה שגויה");
-  }
+  coupons = coupons.filter(c => !c.date || c.date >= today);
+  saveCoupons();
 }
-
-  function createCoupon() {
-  const name = cName.value;
-  const value = parseInt(cValue.value);
-  const uses = parseInt(cUses.value);
-  const date = cDate.value;
-
-  if (!name || !value) return alert("מלא הכל");
-
-  coupons.push({
-    name,
-    value,
-    uses,
-    date
-  });
 
   saveCoupons();
   renderCoupons();
