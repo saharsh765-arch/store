@@ -880,15 +880,33 @@ function renderCoupons() {
 
 /* עריכה */
 function editCoupon(i) {
- <input id="cName" placeholder="שם קופון"><br>
-<input id="cValue" placeholder="הנחה"><br>
-<input id="cUses" placeholder="כמות שימושים"><br>
-<input id="cDate" type="date"><br>
+  // לוקחים את הערכים הנוכחיים
+  let newName = prompt("שם קופון:", coupons[i].name);
+  let newValue = prompt("הנחה (₪):", coupons[i].value);
+  let newUses = prompt("כמות שימושים:", coupons[i].uses ?? "");
+  let newDate = prompt("תאריך (YYYY-MM-DD):", coupons[i].date ?? "");
 
-  if (newName) coupons[i].name = newName;
-  if (newValue) coupons[i].value = newValue;
+  // עדכון רק אם המשתמש הכניס משהו
+  if (newName !== null && newName !== "") {
+    coupons[i].name = newName;
+  }
 
+  if (newValue !== null && newValue !== "") {
+    coupons[i].value = parseInt(newValue);
+  }
+
+  if (newUses !== null && newUses !== "") {
+    coupons[i].uses = parseInt(newUses);
+  }
+
+  if (newDate !== null && newDate !== "") {
+    coupons[i].date = newDate;
+  }
+
+  // שמירה
   localStorage.setItem("coupons", JSON.stringify(coupons));
+
+  // רענון רשימה
   renderCoupons();
 }
 
