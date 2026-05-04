@@ -855,7 +855,7 @@ function createCoupon() {
 
   if (!name || !value) return alert("מלא הכל");
 
-  coupons.push({name, value, uses, date});
+  coupons.push({name,value,uses,date});
   localStorage.setItem("coupons", JSON.stringify(coupons));
 
   document.getElementById("cName").value = "";
