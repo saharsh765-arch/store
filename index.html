@@ -711,7 +711,7 @@ body {
       <input id="cName" placeholder="שם קופון"><br><br>
       <input id="cValue" placeholder="הנחה (₪)"><br><br>
       <input id="cUses" placeholder="כמות שימושים"><br><br>
-      <input id="cDate" type="תאריך"><br><br>
+      <input id="cDate" type="date">
       <button class="btn" onclick="createCoupon()">צור קופון</button>
     </div>
 
@@ -851,15 +851,20 @@ function buy() {
 /* יצירת קופון */
 function createCoupon() {
   const name = document.getElementById("cName").value.trim();
-  const value = document.getElementById("cValue").value.trim();
+  const value = parseInt(document.getElementById("cValue").value);
+
+  const uses = parseInt(document.getElementById("cUses").value);
+  const date = document.getElementById("cDate").value;
 
   if (!name || !value) return alert("מלא הכל");
 
-  coupons.push({name,value,uses,date});
+  coupons.push({ name, value, uses, date });
   localStorage.setItem("coupons", JSON.stringify(coupons));
 
   document.getElementById("cName").value = "";
   document.getElementById("cValue").value = "";
+  document.getElementById("cUses").value = "";
+  document.getElementById("cDate").value = "";
 
   renderCoupons();
 }
