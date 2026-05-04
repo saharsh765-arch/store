@@ -800,7 +800,7 @@ function applyCoupon() {
     return;
   }
 
-  // הפעלת ההנחה
+  // הפעלת הנחה
   discount = found.value;
 
   // הורדת שימוש
@@ -809,22 +809,6 @@ function applyCoupon() {
   }
 
   // שמירה
-  saveCoupons();
-
-  couponMsg.innerText = "✔ הופעל!";
-}
-
-  if (found.uses !== undefined && found.uses <= 0) {
-    couponMsg.innerText = "❌ נגמרו כמות השימושים בקופון זה";
-    return;
-  }
-
-  discount = found.value;
-
-  if (found.uses !== undefined) {
-    found.uses--;
-  }
-
   saveCoupons();
 
   couponMsg.innerText = "✔ הופעל!";
